@@ -1,4 +1,4 @@
-package com.example.gold_digger_unity_flutter
+package com.linkdev.golddigger
 
 import io.flutter.embedding.android.FlutterActivity
 
