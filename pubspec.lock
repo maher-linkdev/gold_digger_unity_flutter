@@ -87,11 +87,11 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: master
-      resolved-ref: "1a38bb555de63dde400c82d8a14470ad52da1f3d"
+      ref: "experimental/unity_6000"
+      resolved-ref: "1bbf24c977f8dcd2495999ff00b8a79d5d93b0d3"
       url: "https://github.com/juicycleff/flutter-unity-view-widget.git"
     source: git
-    version: "2022.2.1"
+    version: "6000.0.0-alpha"
   flutter_web_plugins:
     dependency: transitive
     description: flutter
