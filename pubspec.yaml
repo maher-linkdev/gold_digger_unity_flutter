@@ -38,7 +38,7 @@ dependencies:
   flutter_unity_widget:
     git:
       url: https://github.com/juicycleff/flutter-unity-view-widget.git
-      ref: master
+      ref: experimental/unity_6000
 
 dev_dependencies:
   flutter_test:
