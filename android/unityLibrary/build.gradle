@@ -2,8 +2,9 @@ apply plugin: 'com.android.library'
 apply from: '../shared/keepUnitySymbols.gradle'
 
 dependencies {
-    implementation(name: 'unity-classes', ext:'jar')
-}
+        implementation(name: 'unity-classes', ext:'jar')
+    }
+
 
 android {
     namespace "com.unity3d.player"
