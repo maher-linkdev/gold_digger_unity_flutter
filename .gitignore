@@ -33,6 +33,11 @@ migrate_working_dir/
 .pub/
 /build/
 
+
+# Unity
+/android/unityLibrary/build/
+
+
 # Symbolication related
 app.*.symbols
 
