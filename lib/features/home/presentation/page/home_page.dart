@@ -1,4 +1,6 @@
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_unity_widget/flutter_unity_widget.dart';
 
@@ -10,8 +12,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   UnityWidgetController? _unityWidgetController;
+  double _jumpForce = 5.0;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,20 @@ class _HomePageState extends State<HomePage> {
               onUnitySceneLoaded: onUnitySceneLoaded,
               onUnityMessage: onUnityMessage,
             ),
-
+            if(_unityWidgetController !=null)
+            Slider(
+              value: _jumpForce,
+              min: 1.0,
+              max: 20.0,
+              divisions: 20,
+              label: _jumpForce.toStringAsFixed(1),
+              onChanged: (value) {
+                setState(() {
+                  _jumpForce = value;
+                });
+                updatePlayerSpeed(_jumpForce);
+              },
+            ),
           ],
         ),
       ),
@@ -45,6 +60,23 @@ class _HomePageState extends State<HomePage> {
     } else {
       debugPrint('Received scene loaded from unity: null');
     }
+  }
+
+  void updatePlayerSpeed(double speed){
+      Map<String, dynamic> payload = {
+        "speed": 3,
+        "name": "player",
+        "health": 100,
+        "position": {"x": 10, "y": 5, "z": 0},
+        "abilities": ["jump", "run", "dash"],
+        "isActive": true,
+      };
+      _unityWidgetController?.postMessage(
+        'Cube', //GAME OBJECT IN UNITY
+        'SetMoveSpeed', //METHOD DEFINED IN UNITY
+        payload,
+      );
+
   }
 
   void onUnityCreated(controller) {
