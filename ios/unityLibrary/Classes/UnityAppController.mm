@@ -579,20 +579,32 @@ extern "C" void UnityCleanupTrampoline()
     AppController_SendNotificationWithArg(kUnityHandleEventsForBackgroundURLSession, arg);
 }
 
-// Added by https://github.com/juicycleff/flutter-unity-view-widget
 extern "C" void OnUnityMessage(const char* message)
+
 {
+
     if (GetAppController().unityMessageHandler) {
+
         GetAppController().unityMessageHandler(message);
+
     }
+
 }
 
+ 
+
 extern "C" void OnUnitySceneLoaded(const char* name, const int* buildIndex, const bool* isLoaded, const bool* IsValid)
+
 {
+
     if (GetAppController().unitySceneLoadedHandler) {
+
         GetAppController().unitySceneLoadedHandler(name, buildIndex, isLoaded, IsValid);
+
     }
+
 }
+ 
 
 // advance the load state to newState, if it's not there or higher yet
 // returns YES if state was less than newState
